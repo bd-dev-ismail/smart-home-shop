@@ -19,8 +19,14 @@ const Cart = () => {
     total = total + product.price * product.quantity;
   }
   const deleteShopping = ()=>{
-    setCart([]);
+    if(cart.length){
+      setCart([]);
     deleteShoppingCart();
+     return toast.success('Order Placed' ,{autoClose: 500});
+    }
+    else{
+      return toast.warning('Cart is empty' ,{autoClose: 500});
+    }
   }
   return (
     <div className='flex min-h-screen items-start justify-center bg-gray-100 text-gray-900'>
